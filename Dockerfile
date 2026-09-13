@@ -1,5 +1,5 @@
 # Use an official lightweight Python image
-FROM python:3.12-slim 
+FROM node:20-alpine 
  
 # Set the working directory
 WORKDIR /app
