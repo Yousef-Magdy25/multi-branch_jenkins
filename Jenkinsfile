@@ -3,7 +3,7 @@ pipeline {
  
     environment {
         APP_NAME = 'new-app-nti' 
-        REPO_URL = "https://github.com/Yousef-Magdy25/multi-branch_jenkins.get"
+        REPO_URL = "https://github.com/Yousef-Magdy25/multi-branch_jenkins.git"
     }
 
     stages {
