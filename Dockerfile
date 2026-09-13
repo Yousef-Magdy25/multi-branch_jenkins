@@ -5,7 +5,7 @@ FROM python:3.12-slim
 WORKDIR /app
 
 # Copy dependency file and install dependencies
-COPY requirements.txt .
+COPY package.json .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the application code
