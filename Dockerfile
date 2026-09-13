@@ -5,14 +5,32 @@ FROM node:20-alpine
 WORKDIR /app
 
 # Copy dependency file and install dependencies
-COPY package.json .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY package*.json .
 
-# Copy the application code
-COPY . .
+# Install only production dependencies
+RUN npm ci --omit=dev || npm install --omit=dev
 
-# Expose Flask default port
-EXPOSE 5000
+# Copy application source code
+COPY index.js ./
 
-# Run the app
-CMD ["python", "hello.py"]
+# Expose the default application port
+EXPOSE 3000
+
+# Run the app as a non-root user for security
+USER node
+
+# Start the application
+CMD ["npm", "start"]
+
+
+
+# RUN pip install --no-cache-dir -r requirements.txt
+
+# # Copy the application code
+# COPY . .
+
+# # Expose Flask default port
+# EXPOSE 5000
+
+# # Run the app
+# CMD ["python", "hello.py"]
